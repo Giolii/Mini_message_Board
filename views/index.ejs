@@ -1,0 +1,22 @@
+<div class="chatContainer">
+    <% for (let i=0; i < messages.length; i++) { %>
+        <div class="messageContainer">
+            <div>
+
+                <b>Name: </b>
+                <%= messages[i].user %>
+            </div>
+            <div>
+                <b>Text: </b>
+                <%= messages[i].text %>
+            </div>
+            <div>
+                <b>Date: </b>
+                <%= messages[i].added %>
+            </div>
+            <button onclick="window.location.href=`./details/<%=i%>`">Details</button>
+            <div>----------------------------</div>
+        </div>
+        <% } %>
+            <%- include('form') %>
+</div>
