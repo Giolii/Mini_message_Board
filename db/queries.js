@@ -53,4 +53,5 @@ module.exports = {
   getAllMessages,
   insertMessage,
   deleteAll,
+  populatedb,
 };
