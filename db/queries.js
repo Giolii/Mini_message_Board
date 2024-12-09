@@ -23,6 +23,32 @@ async function deleteAll() {
   }
 }
 
+async function populatedb() {
+  try {
+    await pool.query(CREATE_TABLE_SQL);
+    await pool.query(SEED_DATA_SQL);
+  } catch (error) {
+    console.error("Error populating db", error);
+    throw error;
+  }
+}
+
+const CREATE_TABLE_SQL = `
+CREATE TABLE IF NOT EXISTS messages (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  name TEXT NOT NULL,
+  text TEXT NOT NULL,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+);`;
+
+const SEED_DATA_SQL = `
+INSERT INTO messages (name,text) 
+VALUES
+  ('Bryan','Hi! I am Bryan'),
+  ('Odin','Hi!, I am Odin'),
+  ('Damon', 'Hi! I am Damon');
+`;
+
 module.exports = {
   getAllMessages,
   insertMessage,

@@ -1,5 +1,9 @@
 const db = require("../db/queries");
 
+async function populatedb(req, res) {
+  await db.populatedb();
+  res.redirect("/");
+}
 async function getMessages(req, res) {
   const messages = await db.getAllMessages();
   res.render("index", { messages: messages });
@@ -27,4 +31,5 @@ module.exports = {
   CreateMessagePost,
   getDetails,
   deleteAll,
+  populatedb,
 };

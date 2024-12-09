@@ -21,7 +21,11 @@ VALUES
 
 async function main() {
   const client = new Client({
-    connectionString: "postgresql://gi:Postpsw@localhost:5432/mini_msn",
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+      require: true,
+    },
   });
   try {
     console.log("Starting database seed...");
