@@ -1,10 +1,13 @@
 <div class="chatContainer">
+    <form method="POST" action="/deleteAll">
+        <button type="submit">DELETE ALL</button>
+    </form>
     <% for (let i=0; i < messages.length; i++) { %>
         <div class="messageContainer">
             <div>
 
                 <b>Name: </b>
-                <%= messages[i].user %>
+                <%= messages[i].name %>
             </div>
             <div>
                 <b>Text: </b>
@@ -12,7 +15,8 @@
             </div>
             <div>
                 <b>Date: </b>
-                <%= messages[i].added %>
+                <%= messages[i].date.toLocaleString('en-US', { month: '2-digit' , day: '2-digit' , year: '2-digit' ,
+                    hour: '2-digit' , minute: '2-digit' }) %>
             </div>
             <button onclick="window.location.href=`./details/<%=i%>`">Details</button>
             <div>----------------------------</div>
